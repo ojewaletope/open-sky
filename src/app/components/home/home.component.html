@@ -1,5 +1,8 @@
-<div class="grid-container" >
-  <mat-card *ngFor="let city of cities" (click)="getFlightDetails(city)">
-    {{city.name}}
-  </mat-card>
+<div class="page-wrapper">
+  <mat-card class="page-header">List of Airports</mat-card>
+  <div class="grid-container" >
+    <mat-card class="airport-card" *ngFor="let city of cities" (click)="getFlightDetails(city)">
+      {{city.name}}
+    </mat-card>
+  </div>
 </div>
