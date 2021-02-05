@@ -14,7 +14,8 @@ class DialogData {
 })
 export class FlightModalComponent implements OnInit {
   time: any[] = [];
-  arrivingFlight: any[] = [];
+  flights: any[] = [];
+  departures: any[] = [];
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private flightService: FlightService
@@ -44,14 +45,40 @@ export class FlightModalComponent implements OnInit {
   }
 
   getArrivalFlights(airport, start, end): Subscription {
-    return this.flightService.getArrivalFlights(airport, start, end).subscribe(data => {
-      this.arrivingFlight = data;
-    });
+    return this.flightService
+      .getArrivalFlights(airport, start, end)
+      .subscribe(data => {
+        this.flights = data;
+      });
   }
 
   getValue(value: any): any {
     const presentTimeUTC = Math.round(new Date().getTime() / 1000);
     const earlierTimeUTC = presentTimeUTC - value * 60 * 60 * 24;
-    return this.getArrivalFlights(this.data.data.id, earlierTimeUTC, presentTimeUTC);
+    return this.getArrivalFlights(
+      this.data.data.id,
+      earlierTimeUTC,
+      presentTimeUTC
+    );
+  }
+
+  parseDate(value): string {
+    return new Date(value * 1000).toUTCString();
+  }
+  getDepartureFlights(airport, start, end): Subscription {
+    return this.flightService
+      .getDepartureFlights(airport, start, end)
+      .subscribe(data => {
+        this.flights = data;
+      });
+  }
+  getDepartureValue(value: any): any {
+    const presentTimeUTC = Math.round(new Date().getTime() / 1000);
+    const earlierTimeUTC = presentTimeUTC - value * 60 * 60 * 24;
+    return this.getDepartureFlights(
+      this.data.data.id,
+      earlierTimeUTC,
+      presentTimeUTC
+    );
   }
 }

@@ -4,3 +4,11 @@
   grid-gap: 1rem;
   padding: 1rem;
 }
+
+.form-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+mat-form-field {
+  width: 300px;
+}

@@ -21,4 +21,16 @@ export class FlightService {
         })
       );
   }
+
+  getDepartureFlights(airport, start, end): Observable<any> {
+    return this.http
+      .get(
+        `${environment.BASE_URL}flights/departure?airport=${airport}&begin=${start}&end=${end}`
+      )
+      .pipe(
+        tap(data => {
+          return data;
+        })
+      );
+  }
 }
