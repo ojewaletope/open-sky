@@ -1,1 +1,21 @@
-<p>login works!</p>
+<div class="form-wrapper">
+  <form [formGroup]="userForm" class="form-container">
+    <h4>OpenSky Login</h4>
+    <p>
+      <mat-form-field appearance="legacy">
+        <mat-label>Username(demo)</mat-label>
+        <input matInput placeholder="Username(demo)" formControlName="username"/>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>Password(demo)</mat-label>
+        <input matInput type="password" placeholder="Password(demo)" formControlName="password"/>
+      </mat-form-field>
+    </p>
+    <div class="btn-container" (click)="login(userForm)">
+      <button mat-button color="primary" class="button" >Login</button>
+    </div>
+  </form>
+
+</div>

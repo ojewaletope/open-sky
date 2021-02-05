@@ -1,0 +1,31 @@
+<mat-dialog-content>
+    <h3> <span>Airport: </span>{{data.data.name}}</h3>
+  <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Arrival time in minutes</mat-label>
+      <mat-select (selectionChange)="getValue($event.value)">
+        <mat-option *ngFor="let item of time" [value]="item.id">
+          {{item.time}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <div>
+    <h3>Arriving Flights</h3>
+
+    <div class="grid-container">
+      <mat-card *ngFor="let item of arrivingFlight">
+        <mat-card-header>
+          <mat-card-title><span>ICAO</span> <span>{{item.icao24}}</span></mat-card-title>
+          <mat-card-subtitle></mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            hi
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</mat-dialog-content>
