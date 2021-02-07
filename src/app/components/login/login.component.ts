@@ -15,8 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    public dialog: MatDialog,
-    public dialogRef: MatDialogRef<any>
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -25,7 +24,7 @@ export class LoginComponent implements OnInit {
       password: ['']
     });
   }
-  openDialog(message) {
+  openDialog(message): void {
     const dialogRef = this.dialog.open(MessageComponent, {
       width: '400px',
       data: { message }
@@ -35,6 +34,7 @@ export class LoginComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
+  // tslint:disable-next-line:typedef
   login(userForm: FormGroup) {
     const payload = userForm.value;
     if (!payload.username) {

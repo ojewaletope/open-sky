@@ -3,13 +3,18 @@ import { MatDialog } from '@angular/material/dialog';
 import { FlightModalComponent } from '../flight-modal/flight-modal.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+interface Cities {
+  id: string;
+  name: string;
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  cities: any[] = [];
+  cities: Cities[] = [];
   constructor(public dialog: MatDialog, private http: HttpClient) {}
   url = `https://opensky-network.org/api`;
   ngOnInit(): void {
