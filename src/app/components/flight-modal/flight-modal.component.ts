@@ -2,20 +2,24 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FlightService } from '../../services/flight.service';
 import { Subscription } from 'rxjs';
+import {ResponseInterface} from '../../model/response-interface';
 
 class DialogData {
   data: any;
 }
 
+interface Time {
+  id: number;
+  time: string;
+}
 @Component({
   selector: 'app-flight-modal',
   templateUrl: './flight-modal.component.html',
   styleUrls: ['./flight-modal.component.scss']
 })
 export class FlightModalComponent implements OnInit {
-  time: any[] = [];
-  flights: any[] = [];
-  departures: any[] = [];
+  time: Time[];
+  flights: ResponseInterface[] = [];
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private flightService: FlightService
